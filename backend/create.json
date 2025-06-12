@@ -1,0 +1,85 @@
+{
+    "operation": "create",
+    "database": "score_sync",
+    "host": "127.0.0.1",
+    "user": "postgres",
+    "password": "",
+    "port": 5432,
+    "tables": {
+        "users": {
+            "id": "SERIAL PRIMARY KEY",
+            "first_name": "TEXT",
+            "last_name": "TEXT",
+            "username": "TEXT",
+            "email": "TEXT",
+            "password": "TEXT",
+            "teams": "TEXT[]"
+        },
+        "players": {
+            "id": "SERIAL PRIMARY KEY",
+            "first_name": "TEXT",
+            "last_name": "TEXT",
+            "team_id": "INTEGER",
+            "email": "TEXT",
+            "jersey_num": "INTEGER"
+        },
+        "teams": {
+            "team_id": "SERIAL PRIMARY KEY",
+            "team_name": "TEXT",
+            "roster_names": "TEXT[]",
+            "contact_email": "TEXT",
+            "contact_person": "TEXT",
+            "record": "TEXT",
+            "wins": "INTEGER",
+            "losses": "INTEGER",
+            "ties": "INTEGER",
+            "game_ids": "INTEGER[]",
+            "league_id": "INTEGER"
+        },
+        "leagues": {
+            "league_id": "SERIAL PRIMARY KEY",
+            "league_name": "TEXT UNIQUE NOT NULL",
+            "location": "TEXT",
+            "season": "TEXT",
+            "start_date": "TEXT",
+            "end_date": "TEXT",
+            "quarter_length": "TEXT",
+            "shot_clock": "TEXT",
+            "ot_length": "TEXT",
+            "fouls_per_qt": "TEXT",
+            "admin_name": "TEXT",
+            "admin_email": "TEXT",
+            "admin_phone_num": "TEXT",
+            "league_rules": "TEXT"
+        },
+        "games": {
+           "game_id": "SERIAL PRIMARY KEY", 
+            "home_team": "TEXT",
+            "home_team_id": "INTEGER",
+            "away_team": "TEXT",
+            "away_team_id": "INTEGER",
+            "home_points_scored": "INTEGER",
+            "away_points_scored": "INTEGER",
+            "commence_time": "TIMESTAMP",
+            "sport": "TEXT",
+            "location": "TEXT",
+            "is_playoff": "BOOLEAN",
+            "winning_team": "TEXT"
+        },
+        "football_stats": {
+            "id": "SERIAL PRIMARY KEY",
+            "pass_yds": "INTEGER",
+            "pass_tds": "INTEGER",
+            "rush_yds": "INTEGER",
+            "rush_tds": "INTEGER",
+            "rec_yds": "INTEGER",
+            "rec_tds": "INTEGER",
+            "receptions": "INTEGER",
+            "interceptions": "INTEGER",
+            "deflections": "INTEGER",
+            "sacks": "FLOAT",
+            "jersey_num": "INTEGER",
+            "player_id": "INTEGER"
+        }
+    }
+}
